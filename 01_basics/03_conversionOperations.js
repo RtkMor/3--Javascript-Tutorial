@@ -1,3 +1,5 @@
+// ********* Conversion ********* //
+
 let score = "35"
 
 console.log(typeof score)
@@ -13,3 +15,19 @@ console.log(valueInNumber)
 // true => 1; false => 0
 // null => 0
 // undefined => NaN
+
+
+// ********* Operations ********* //
+
+// console.log(2+2)
+// console.log(2-2)
+// console.log(2*2)
+// console.log(2**3)
+// console.log(2/2)
+// console.log(2%2)
+
+console.log("1" + 2 + 3);
+console.log("1" + (2 + 3));
+console.log(1 + 2 + "3");
+console.log(2 + 3 * 4 % 2);
+
