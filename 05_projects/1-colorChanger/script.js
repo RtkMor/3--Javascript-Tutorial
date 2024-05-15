@@ -3,7 +3,7 @@ const buttons = document.querySelectorAll('.button');
 const body = document.querySelector('body');
 
 buttons.forEach( (button) => {
-    button.addEventListener( 'click', (e) => {
+    button.addEventListener( 'click', function(e){
         
         const color = button.className;
         console.log(color);
