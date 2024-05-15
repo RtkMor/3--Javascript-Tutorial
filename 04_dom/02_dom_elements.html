@@ -1,0 +1,115 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM | Chai or Code</title>
+</head>
+<body style="background-color: #212121; color: white;">
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+</body>
+
+<script>
+
+    // ************************* Part - 1 ****************************** //
+
+    const parent = document.querySelector('.parent')
+
+    console.log(parent);
+    // console.log(parent.children);
+
+    // for (let i = 0; i < parent.children.length; i++) {
+    //     console.log(parent.children[i].innerHTML);
+    // }
+
+    // parent.children[1].style.color = 'orange';        // Tuesday will become orange
+
+    // console.log(parent.firstElementChild);
+    // console.log(parent.lastElementChild);
+
+    // const dayOne = document.querySelector('.day')
+    // console.log(dayOne);
+    // console.log(dayOne.parentElement);
+
+    // console.log("Nodes :- ", parent.childNodes);
+
+
+
+    // ************************* Part - 2 ****************************** //
+
+    // Creating a new element 'Friday'
+
+    // const div = document.createElement('div');
+    // div.className = 'day';
+    // div.style.color = 'orange';
+    // console.log(div);
+
+    // div.textContent = "Friday";
+    
+    // parent.appendChild(div);
+
+
+    // Converting it into a function to use it anytime
+    function addDays(day){
+        const div = document.createElement('div');
+        div.innerHTML = day;
+        document.querySelector('.parent').appendChild(div);
+    }
+
+    // addDays('Saturday')
+
+    function optiAddDays(day){
+        const div = document.createElement('div');
+        div.appendChild(document.createTextNode(day));
+        document.querySelector('.parent').appendChild(div);
+    }
+
+    // optiAddDays('Sunday')
+    // optiAddDays('Monday')
+
+
+
+    // ************************* Part - 3 ****************************** //
+
+    // Creating an unordered list using DOM
+
+    const h1 = document.createElement('h1');
+    h1.appendChild(document.createTextNode("Languages"));
+    document.body.appendChild(h1);
+
+    const ul = document.createElement('ul');
+    ul.className = 'list';
+    document.body.appendChild(ul);
+
+    function addOptiLanguage(langName){
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(langName));
+        document.querySelector('.list').appendChild(li);
+    }
+
+    addOptiLanguage('Javascript')
+    addOptiLanguage('Ruby')
+    addOptiLanguage('Python')
+    addOptiLanguage('C++')
+
+    // Editing an existing element
+
+    const secondLang = document.querySelector('li:nth-child(2)')        // -> We selected the 2nd item in our unordered list
+    console.log(secondLang);
+    const newLi = document.createElement('li');                         // -> we created a new list item
+    newLi.textContent = "Mojo";                                         // -> we set the text content of our new element to Mojo
+    secondLang.replaceWith(newLi);                                      // -> we replaced our 2nd list item with new list item
+    console.log(secondLang);
+    console.log(newLi);
+
+    // Removing an existing element
+
+    const toRemove = document.querySelector('li:last-child');
+    toRemove.remove();
+
+</script>
+
+</html>
