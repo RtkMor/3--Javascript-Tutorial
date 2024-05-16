@@ -1,0 +1,112 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events | DOM</title>
+
+    <style>
+        img{
+            height: 200px;
+            width: 200px;
+        }
+
+        a{
+            color: white;
+        }
+
+        li{
+            margin: 10px;
+        }
+    </style>
+
+</head>
+<body style="background: #212121; color: white;">
+    <h1>Events Learning</h1>
+    <ul id="images">
+        <li><img src="https://wallpapers.com/images/hd/scared-zenitsu-anime-pfp-nhuc9w2ghno4beff.jpg" alt="zenistsu" id="zenistsu"></li>
+        <li><img src="https://i.pinimg.com/originals/cb/1a/69/cb1a691bf6dd5d7dab09c66498bff7b4.jpg" alt="sakurajima" id="sakurajima"></li>
+        <li><img src="https://i.pinimg.com/736x/47/85/d8/4785d81f2933d892aa520ee7902a52fd.jpg" alt="jabami" id="jabami"></li>
+        <li><img src="https://i.pinimg.com/originals/4e/7e/db/4e7edb84ed3c8c589ce635beccccb07c.jpg" alt="emilia" id="emilia"></li>
+        <li><img src="https://wallpaperaccess.com/full/9986721.jpg" alt="ace" id="ace"></li>
+        <li><a href="https://www.google.com/" id="google">Click Here to go to Google</a></li>
+    </ul>
+</body>
+
+<script>
+
+    const imagesList = document.getElementById('images');
+    const jabami = document.getElementById('jabami');
+
+    // Method - 1 (Don't use it)
+    // jabami.setAttribute('onclick', 'alert("Yumeko Jabami")');
+
+
+    // Method - 2 (Don't use it)
+    // jabami.onclick = function(){
+    //     alert("Yumeko Jabami");
+    // }
+
+
+    // Method - 3 (Best approach, it provide a lot of features also)
+    // jabami.addEventListener('click', function(){
+    //     alert('Yumeko Jabami');
+    // }, false)
+
+
+    // Now talking about this 'false' that we added, it is used to define whether its a buble invocation or not
+    // false means, bubling event -> Traversing Bottomost to Outermost (Child to Parent)
+    // true means, capturing event -> Traversing Outmost to Bottomost (Parent to Child)
+    
+    // jabami.addEventListener('click', function(e){
+    //     console.log('Yumeko Jabami clicked!');
+    //     // e.stopPropagation();         -> to stop the propogation of click method between parent and child
+    // }, false);
+
+    // imagesList.addEventListener('click', function(e){
+    //     console.log("PFP list clicked!");
+    // }, false);
+
+
+    /// Things to study -> type, timestamp, preventDefault
+    ///                 -> target, toElement, srcElement, currentTarget
+    /// interview related -> clientX, clientY, screenX, screenY
+    ///                   -> altkey, ctrlkey, shiftkey, keyCode
+
+
+    // preventDefault() -> stop the default function of that thing
+    // document.getElementById('google').addEventListener('click', function(e){
+    //     console.log('Google clicked!');
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    // }, false);
+
+
+    // target -> remove the clicked image
+    imagesList.addEventListener('click', function(e){
+
+        // This removing the images but not the bullet points
+        // const id = e.target.id;
+        // console.log(id);
+        // const clickedImage = document.getElementById(id);
+        // clickedImage.remove();
+
+
+        // Correct way but not the best to remove the 'list items' but can remove the whole list if clicked on the bullet points as well
+        // const clickedElement = e.target.parentNode;
+        // console.log(clickedElement);
+        // clickedElement.remove();
+
+
+        // Best method to remove the 'list item only' not the whole list if clicked on the bullet point as well
+        const clickedElement = e.target.parentNode;
+        console.log((clickedElement));
+        if(e.target.tagName === 'IMG' || e.target.tagName === 'A'){
+            console.log(e.target.id);
+            clickedElement.remove();
+        }
+
+    });
+
+</script>
+
+</html>
