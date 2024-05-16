@@ -1,0 +1,93 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async | Timeout | Interval</title>
+
+    <style>
+        body{
+            background: #212121;
+            color: white;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h1>Async, Timeout and Interval</h1>
+
+    <button id="stop">STOP</button>
+
+    <button id="startTimer">START TIMER</button>
+    <button id="stopTimer">STOP TIMER</button>
+
+</body>
+
+<script>
+
+    const button = document.getElementById('stop');
+    const startTimer = document.getElementById('startTimer');
+    const stopTimer = document.getElementById('stopTimer');
+
+
+    // Note - 1 -> Hello World! will be printed in the console after 3000 mili seconds (3 seconds)
+    // setTimeout(function(){
+    //     console.log("Hello World!");
+    // }, 3000);
+
+
+    // Note - 2 -> Now we want to implement the button 'stop' such that if we click on it within 3 seconds then the message will not get printed in console
+    // function printMe(){
+    //     console.log("Stop Me If You Can!");
+    // }
+
+    // const stopMe = setTimeout(printMe, 3000);
+
+    // button.addEventListener('click', function(){
+    //     console.log("Timer Stopped");
+    //     clearTimeout(stopMe);
+    // });
+
+
+    // Note - 3 -> Perform same thing from happening when changing the h1 heading text
+    function changeHeading(){
+        document.querySelector('h1').innerHTML = "Heading Got Changed HAHAHA!"
+        console.log("Heading GOT CHANGED!");
+    }
+
+    const changeHeadingTimer = setTimeout(changeHeading, 3000);
+
+    button.addEventListener('click', function(){
+        console.log("Heading Changer Stopped!");
+        clearTimeout(changeHeadingTimer);
+    })
+
+
+    // Node - 4 -> setInterval to start counting and stopInterval to stop counting
+    function sayDate(){
+        const time = new Date();
+        console.log(time.toLocaleTimeString());
+    }
+
+    let startInterval;
+    let bool = false;
+    startTimer.addEventListener('click', function(){
+        if(!bool){
+            startInterval = setInterval(sayDate, 1000);
+            bool = true;
+        }
+            
+    });
+    stopTimer.addEventListener('click', function(){
+        if (bool) {
+            clearInterval(startInterval);
+            bool = false;
+        }
+    })
+
+
+
+
+</script>
+
+</html>
