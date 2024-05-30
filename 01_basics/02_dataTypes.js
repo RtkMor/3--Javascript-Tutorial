@@ -12,7 +12,7 @@ let state;
 // string => ""
 // boolean => true/false
 // null => standalone value
-// underfined => value is not defined yet
+// undefined => value is not defined yet
 // symbol => unique
 // object
 
