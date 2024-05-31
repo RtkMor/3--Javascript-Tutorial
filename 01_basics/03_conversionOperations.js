@@ -2,6 +2,7 @@
 
 let score = "35"
 
+// you want to or not want to use brackets is up to you, both are correct
 console.log(typeof score)
 console.log(typeof(score))
 
